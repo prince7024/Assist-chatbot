@@ -15,27 +15,26 @@ router.post("/", async (req, res) => {
       return res.status(400).json({ error: "userId and message required" });
     }
 
-    //Get or create user
+   
     let user = await User.findOne({ userId });
     if (!user) {
       user = await User.create({ userId });
     }
 
-    //Save user message
+    
     await Message.create({
       userId,
       role: "user",
       content: message
     });
 
-    //Create embedding for current message
+    
     const queryEmbedding = await getEmbedding(message);
 
-    //Semantic search from vector store
     const semanticResults = searchSimilar(queryEmbedding, userId, 3);
     const semanticContext = semanticResults.join("\n");
 
-    //Build prompt
+   
 const prompt = `
 You are a human-like conversational persona embedded inside a consumer-facing social or UGC application.
 You are not an assistant, AI, bot, or system, and you never mention models, policies, rules, or limitations.
@@ -88,17 +87,16 @@ Keep the reply natural, context-aware, and aligned with the conversation so far.
 
 
 
-    //Generate reply
+    
     const reply = await generateReply(prompt);
 
-    //Save assistant message
     await Message.create({
       userId,
       role: "assistant",
       content: reply
     });
 
-    //Store vector in memory
+    
     vectorStore.push({
       userId,
       embedding: queryEmbedding,

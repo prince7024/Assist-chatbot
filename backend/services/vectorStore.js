@@ -1,6 +1,6 @@
 export const vectorStore = [];
 
-// Cosine similarity
+
 function cosineSimilarity(a, b) {
   let dot = 0;
   let magA = 0;
@@ -15,7 +15,6 @@ function cosineSimilarity(a, b) {
   return dot / (Math.sqrt(magA) * Math.sqrt(magB));
 }
 
-// Search similar vectors
 export function searchSimilar(queryEmbedding, userId, topK = 3) {
   return vectorStore
     .filter(v => v.userId === userId)

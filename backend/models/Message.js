@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const messageSchema = new mongoose.Schema({
   userId: String,
-  role: String, // "user" | "assistant"
+  role: String, 
   content: String,
   createdAt: { type: Date, default: Date.now }
 });
