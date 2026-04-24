@@ -42,7 +42,7 @@ This enables memory recall across sessions (page refresh, new visit).
 - Cosine similarity is used to retrieve relevant past context.
 - Enables meaning-based recall rather than keyword matching.
 
-> **Note:** For this demo, semantic memory is maintained in-memory.  
+> **Note:** For the personal project, semantic memory is maintained in-memory.  
 > In production, this can be replaced with a persistent vector database such as Pinecone, FAISS, or ChromaDB Vector.
 
 ---
@@ -116,7 +116,7 @@ Make sure you have the following installed:
 
 ```bash
 git clone https://github.com/prince7024/assist-chatbot.git
-cd stan-chatbot
+cd assist-chatbot
 
 ```
 
