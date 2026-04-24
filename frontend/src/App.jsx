@@ -49,7 +49,7 @@ export default function App() {
 
       
         <div className="px-4 py-3 border-b text-center font-semibold bg-gray-50 shrink-0">
-          🤖 STAN Chatbot
+          🤖 Assist Chatbot
         </div>
 
      

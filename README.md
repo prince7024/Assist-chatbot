@@ -1,4 +1,4 @@
-# STAN Conversational Chatbot 🤖
+# Assist-chatbot 🤖
 
 A human-like conversational chatbot designed to be embedded into consumer-facing or UGC platforms.  
 The chatbot demonstrates contextual awareness, long-term memory, emotional tone adaptation, and hallucination-safe behavior.
@@ -115,7 +115,7 @@ Make sure you have the following installed:
 ### 1️⃣ Clone the Repository
 
 ```bash
-git clone https://github.com/prince7024/Stan-chatbot.git
+git clone https://github.com/prince7024/assist-chatbot.git
 cd stan-chatbot
 
 ```

@@ -2,8 +2,7 @@ import express from "express";
 import User from "../models/user.js";
 import Message from "../models/Message.js";
 import { generateReply } from "../services/gemini.js";
-import { getEmbedding } from "../services/embeddings.js";
-import { vectorStore, searchSimilar } from "../services/vectorStore.js";
+
 
 const router = express.Router();
 
@@ -29,11 +28,7 @@ router.post("/", async (req, res) => {
     });
 
     
-    const queryEmbedding = await getEmbedding(message);
-
-    const semanticResults = searchSimilar(queryEmbedding, userId, 3);
-    const semanticContext = semanticResults.join("\n");
-
+   const semanticContext = "";
    
 const prompt = `
 You are a human-like conversational persona embedded inside a consumer-facing social or UGC application.
@@ -97,16 +92,12 @@ Keep the reply natural, context-aware, and aligned with the conversation so far.
     });
 
     
-    vectorStore.push({
-      userId,
-      embedding: queryEmbedding,
-      text: message
-    });
+  
 
     res.json({ reply });
 
   } catch (error) {
-    console.error("Chat error:", error.message);
+    console.error("Chat error:", error.response?.data || error.message);
     res.status(500).json({ error: "Chat failed" });
   }
 });
